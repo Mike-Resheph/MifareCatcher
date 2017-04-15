@@ -30,7 +30,7 @@ This file will contain successful captures for capture verification.
 
 You also need a RFID reader that captures ISO/IEC 14443 Type A, 1kB 13.56 Mhz contactless smartcards.
 
-I recommend using this from a RPI 3, Odroid C2 or something simmilar and configure that device as an AP including a DHCP server, of course.
+I recommend using this from a RPI 3, Odroid C2 or something simmilar and configure that device as an AP including a DHCP server or a static IP address.
 That way you can connect using a mobile phone and browse https://<server IP>/dumps.htm to see if you have a successful capture.
 Then power the device with a powerbank and place everything in a thin bag of some sort.
 
