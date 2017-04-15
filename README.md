@@ -75,3 +75,7 @@ hostapd wpa2.conf &
 Then start capturing cards.
 ./mfc
 
+
+*** More
+If you want to change the SSID or the PSK, you will find them in wpa2.conf.
+

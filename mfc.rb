@@ -24,7 +24,6 @@ webroot = "/var/www/html/"
 htmlfile = "dumps.htm"
 
 def updatehtml(folder, web)
-  puts "Success"
   outfile = File.open(web, 'w')
   outfile.puts '<html><body>'
   Dir.foreach(folder) do |entity|
