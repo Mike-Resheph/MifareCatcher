@@ -44,6 +44,7 @@ Read the man or info page to see how it actually works.
 *** Verification and other useful commands
 nfc-list will show if your RFID readier is working.
 clean.sh will remove empty or unsuccessful dumps.
+start.sh will start the process. Browse the script for more details.
 
 *** How to use it
 Change to the MifareCatcher directory and execute "./mfc".
