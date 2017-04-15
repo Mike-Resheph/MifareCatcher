@@ -51,7 +51,7 @@ Change to the MifareCatcher directory and execute "./mfc".
 When the script is running, get the reader as close to a Mifare card as possible.
 
 *** How to configure your device as an AP.
-Install hostAPd and udhcpd:
+Install hostAPd and udhcpd.
 
 apt-get install hostapd dhcpd -y
 
@@ -61,6 +61,16 @@ I use wlan1 in this example.
 Give the wireless interface an IP address in the DHCP range that is being handed out.
 ifconfig wlan1 192.168.0.1
 
+And make sure it is up.
+ifconfig wlan1 up
+
+Make sure Apache 2 is running.
+systemctl start apache2
+
 Start the DHCP server and the AP.
 udhcpd
-hostapd wpa2.conf
+hostapd wpa2.conf &
+
+Then start capturing cards.
+./mfc
+
