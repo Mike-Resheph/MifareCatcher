@@ -1,5 +1,7 @@
 #!/bin/bash
-apt-get install kali-linux-rfid -y
+apt-get update
+apt-get install apache2 hostapd kali-linux-rfid -y
+apt-get clean
 mkdir dumps
 chmod u+x clean.sh
 chmod u+x start.sh

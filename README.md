@@ -19,9 +19,10 @@ I am aware that this is very rudimentary but I just needed something that works.
 *** Requirements
 Run the "setup.sh" script before using this tool the first time.
 You may have to set execute permissions on this file using "chmod u+x setup.sh"
+There is no danger in running this several times and it does not affect, say, Apache 2 if you already have that running.
 
 This script will:
-1) Install the metapackage kali-linux-rfid
+1) Install the metapackage kali-linux-rfid, Apache2 and hostAPd
 2) Create the subfolder "dumps"
 3) Make some files executable
 
@@ -30,8 +31,8 @@ This file will contain successful captures for capture verification.
 
 You also need a RFID reader that captures ISO/IEC 14443 Type A, 1kB 13.56 Mhz contactless smartcards.
 
-I recommend using this from a RPI 3, Odroid C2 or something simmilar and configure that device as an AP including a DHCP server or a static IP address.
-That way you can connect using a mobile phone and browse https://<server IP>/dumps.htm to see if you have a successful capture.
+I recommend using this from a RPI 3, Odroid C2 or something simmilar and configure that device as an AP including a self assigned IP address.
+That way you can connect using a mobile phone and browse http://169.254.0.1/dumps.htm to see if you have a successful capture.
 Then power the device with a powerbank and place everything in a thin bag of some sort.
 
 
@@ -45,6 +46,8 @@ Read the man or info page to see how it actually works.
 nfc-list will show if your RFID readier is working.
 clean.sh will remove empty or unsuccessful dumps.
 start.sh <interface> will start the process. Browse the script for more details.
+setup.sh will make sure needed software has been installed, permissions are correct and needed folders are created.
+mfc is the script that will start the actual capture.
 
 *** How to use it
 Change to the MifareCatcher directory and execute "./mfc".
@@ -52,24 +55,23 @@ Change to the MifareCatcher directory and execute "./mfc".
 When the script is running, get the reader as close to a Mifare card as possible.
 
 *** How to configure your device as an AP.
-Install hostAPd and udhcpd.
+Install hostAPd.
 
-apt-get install hostapd dhcpd -y
+apt-get install hostapd -y
 
-Edit /etc/udhcpd.conf and correct the interface to your wifi interface.
-I use wlan1 in this example.
+I use self assigned IP addresses because it saves me from configuring a DHCP server.
+It takes a little while before a device such as a mobile phone fails to retrieve an IP address from the non-existant DHCP server.
+Be patient and the device will assign an address in the 169.254.0.0/16 network to itself.
 
-Give the wireless interface an IP address in the DHCP range that is being handed out.
-ifconfig wlan1 192.168.0.1
+ifconfig wlan1 169.254.0.1 netmask 255.255.0.0
 
 And make sure it is up.
 ifconfig wlan1 up
 
-Make sure Apache 2 is running.
+Make sure Apache 2 is running. If you already use Apache 2 for something, just make sure a VHOST for this exist. The default one is fine.
 systemctl start apache2
 
-Start the DHCP server and the AP.
-udhcpd
+Start the AP. It is possible to start hostAPd as a service if you want to.
 hostapd wpa2.conf &
 
 Then start capturing cards.
@@ -79,3 +81,6 @@ Then start capturing cards.
 *** More
 If you want to change the SSID or the PSK, you will find them in wpa2.conf.
 
+The AP defaults to 169.254.0.1/16 and the default password is "MifareC1".
+
+It is a good idea to run the clean.sh script when ever you are done capturing.

@@ -10,14 +10,15 @@ echo "[!] Run this script using start.sh <wireless interface>"
 echo "[*] Displaying RFC reader status."
 nfc-list
 echo "[*] Setting IP address on $INTERFACE."
-ifconfig $INTERFACE 192.168.0.1 netmask 255.255.255.0
+ifconfig $INTERFACE 169.254.0.1 netmask 255.255.0.0
 ifconfig $INTERFACE up
 echo "[*] Restarting Apache 2 to make sure it will listen on $INTERFACE."
 systemctl restart apache2.service
-echo "[*] Restarting/starting the DHCP server."
-systemctl restart udhcpd.service
 echo "[*] Starting the AP."
 hostapd wpa2.conf &
+sleep 3
 echo "[*] Starting the capture using MifareCatcher."
 ./mfc
-
+echo "[!] Stopped. Cleaning up failed captures."
+./clean.sh
+echo "[*] Done..."
