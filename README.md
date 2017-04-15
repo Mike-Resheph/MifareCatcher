@@ -10,8 +10,9 @@ Website: https://www.postexplo.com/
 Contact: @ReshephTheGray
 
 A rudimentary script in place to capture information from Mifare cards often used as access cards for larger organizations.
+WARNING: Always make sure you have permissions to do what ever you do with this software. Stay legal!
 
-This tool is build to work on Kali Linux 2.x
+This tool is build to work on Kali Linux 2.x but should work on must Debian derived systems.
 This tool just loops around other tools and tries to fetch information from Mifare 1K access cards often used in physical access control systems (PACS).
 
 I am aware that this is very rudimentary but I just needed something that works.
