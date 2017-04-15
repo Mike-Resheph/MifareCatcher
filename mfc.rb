@@ -38,11 +38,10 @@ end
 puts BANNER
 
 loop do
-  sleep(wait)
   time = Time.new
-
   file = dumpfolder + time.strftime("%Y-%m-%d_%H.%M.%S") + extension
   value = %x( mfoc -O #{file} )
   if ($?.exitstatus == 0) then updatehtml(dumpfolder, webroot + htmlfile) end
+  sleep(wait)
 end
 
