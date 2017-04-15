@@ -12,7 +12,7 @@ Contact: @ReshephTheGray
 A rudimentary script in place to capture information from Mifare cards often used as access cards for larger organizations.
 
 This tool is build to work on Kali Linux 2.x
-This tool just loops around other tools and tries to fetch information from Mifare 1K access cards often used in physical access control systems (PACS)
+This tool just loops around other tools and tries to fetch information from Mifare 1K access cards often used in physical access control systems (PACS).
 
 I am aware that this is very rudimentary but I just needed something that works.
 
