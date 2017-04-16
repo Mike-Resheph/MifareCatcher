@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+# By Resheph
+# Website: https://www.postexplo.com/
+# Contact: @ReshephTheGray
 
 ## Required Modules
 
@@ -21,7 +24,6 @@ webroot = "/var/www/html/"
 htmlfile = "dumps.htm"
 
 def updatehtml(folder, web)
-  puts "Success"
   outfile = File.open(web, 'w')
   outfile.puts '<html><body>'
   Dir.foreach(folder) do |entity|
@@ -36,11 +38,10 @@ end
 puts BANNER
 
 loop do
-  sleep(wait)
   time = Time.new
-
   file = dumpfolder + time.strftime("%Y-%m-%d_%H.%M.%S") + extension
   value = %x( mfoc -O #{file} )
   if ($?.exitstatus == 0) then updatehtml(dumpfolder, webroot + htmlfile) end
+  sleep(wait)
 end
 
