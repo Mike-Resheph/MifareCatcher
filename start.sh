@@ -21,6 +21,3 @@ hostapd wpa2.conf &
 sleep 3
 echo "[*] Starting the capture using MifareCatcher."
 ./mfc
-echo "[!] Stopped. Cleaning up failed captures."
-./clean.sh
-echo "[*] Done..."

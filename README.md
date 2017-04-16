@@ -12,7 +12,7 @@ Contact: @ReshephTheGray
 A rudimentary script in place to capture information from Mifare cards often used as access cards for larger organizations.
 WARNING: Always make sure you have permissions to do what ever you do with this software. Stay legal!
 
-This tool is build to work on Kali Linux 2.x but should work on must Debian derived systems.
+This tool is build to work on Kali Linux 2.x but should work on must Debian derived systems as long as the mfoc tool is available.
 This tool just loops around other tools and tries to fetch information from Mifare 1K access cards often used in physical access control systems (PACS).
 
 I am aware that this is very rudimentary but I just needed something that works.
@@ -84,4 +84,6 @@ If you want to change the SSID or the PSK, you will find them in wpa2.conf.
 
 The AP defaults to 169.254.0.1/16 and the default password is "MifareC1".
 
-It is a good idea to run the clean.sh script when ever you are done capturing.
+It is a good idea to run the clean.sh script when ever you are done capturing. Just press CTRL^C to stop it.
+
+HostAPd should pick any apropriate channel as it is set to channel 0. Of course you can tamper the wpa2.conf in any way you want.
