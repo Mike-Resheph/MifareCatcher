@@ -38,10 +38,8 @@ Then power the device with a powerbank and place everything in a thin bag of som
 
 
 *** Writing a dump to a new card
+You should read the MAN or INFO page for each tool before you use them.
 nfc-mfclassic w B <file in dumps/> <file in dumps/>
-
-Read the man or info page to see how it actually works.
-
 
 *** Verification and other useful commands
 nfc-list will show if your RFID readier is working.
@@ -51,7 +49,7 @@ setup.sh will make sure needed software has been installed, permissions are corr
 mfc is the script that will start the actual capture.
 
 *** How to use it
-Change to the MifareCatcher directory and execute "./mfc".
+Change to the MifareCatcher directory and execute "./start.sh".
 
 When the script is running, get the reader as close to a Mifare card as possible.
 
@@ -73,6 +71,7 @@ Make sure Apache 2 is running. If you already use Apache 2 for something, just m
 systemctl start apache2
 
 Start the AP. It is possible to start hostAPd as a service if you want to.
+This file is hardcoded to wlan1. Edit the file and change it if you need it to be some other interface.
 hostapd wpa2.conf &
 
 Then start capturing cards.
@@ -87,3 +86,4 @@ The AP defaults to 169.254.0.1/16 and the default password is "MifareC1".
 It is a good idea to run the clean.sh script when ever you are done capturing. Just press CTRL^C to stop it.
 
 HostAPd should pick any apropriate channel as it is set to channel 0. Of course you can tamper the wpa2.conf in any way you want.
+It takes a little while for the AP to come up because it tahes a bit of time to find the best channel. You can hardcode the channel if you want.

@@ -15,9 +15,9 @@ iwconfig $INTERFACE txpower 12
 ifconfig $INTERFACE 169.254.0.1 netmask 255.255.0.0
 ifconfig $INTERFACE up
 echo "[*] Restarting Apache 2 to make sure it will listen on $INTERFACE."
-systemctl restart apache2.service
+systemctl restart apache2.service > /dev/null 2>&1
 echo "[*] Starting the AP."
 hostapd wpa2.conf &
-sleep 3
+sleep 6
 echo "[*] Starting the capture using MifareCatcher."
 ./mfc
