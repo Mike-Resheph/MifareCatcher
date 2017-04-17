@@ -17,7 +17,7 @@ BANNER.freeze
 
 ## Globals
 file = ""
-wait = 1
+wait = 1.5
 extension = "_card.mfd"
 dumpfolder = "dumps/"
 webroot = "/var/www/html/"

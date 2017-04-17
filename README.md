@@ -87,3 +87,11 @@ It is a good idea to run the clean.sh script when ever you are done capturing. J
 
 HostAPd should pick any apropriate channel as it is set to channel 0. Of course you can tamper the wpa2.conf in any way you want.
 It takes a little while for the AP to come up because it tahes a bit of time to find the best channel. You can hardcode the channel if you want.
+
+
+*** Known issues
+There are loads of issues:
+
+1) Many configurations are hardcoded and have to be changed in more than one file.
+2) The network manager may allocate the wifi card. A temporary fix could be to stop the network manager. systemctl stop network-manager.service
+
